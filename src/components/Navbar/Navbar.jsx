@@ -1,24 +1,29 @@
-import * as React from 'react';
+import * as React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import * as CONSTS from "../../utils/consts";
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import HomeIcon from '@mui/icons-material/Home';
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import ForestIcon from "@mui/icons-material/Forest";
+import HomeIcon from "@mui/icons-material/Home";
+//Badge
+import Stack from "@mui/material/Stack";
+import Badge from "@mui/material/Badge";
+import BasicModal from "../BasicModal";
 
-const pages = ['Countries', 'Campaigns', 'Achievements'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const pages = ["Countries", "Campaigns", "Community", "Achievements"];
+const settings = ["Profile", "Account", "Favorites", "Logout"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -39,32 +44,34 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
-
-
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      className="Navbar"
+      
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <ForestIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
-            variant="h6"
+            variant="h4"
             noWrap
             component="a"
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".5rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
-          <HomeIcon />
+            <HomeIcon />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -79,96 +86,165 @@ const Navbar = () => {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+              {/*Map to create hamburger menu links*/}
+              {pages.map((page, index) => (
+                <Link key={index} to={`/${page.toLowerCase()}`} className="authLink">
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
+              {/*Auth forms links*/}
+                
+                <Link to="/auth/signup" className="authLink">
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Signup</Typography>
+                  </MenuItem>
+                </Link>
+
+                <Link to="/auth/login" className="authLink">
+                <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Login</Typography>
+                  </MenuItem>
+                </Link>
+
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <ForestIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
-            variant="h5"
+            variant="h4"
             noWrap
             component="a"
             href=""
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
+              fontSize: "20px",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".5rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
-            LOGO
-          <HomeIcon color="success" />
+            PhilanTrophy
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+          {/*Map to create the pages buttons*/}
+
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} className="box">
+            <div className="menu-buttons">
+            {pages.map((page, index) => (
+              <Link
+                key={index} to={`/${page.toLowerCase()}`} className="pageLink">
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    fontSize: "20px",
+                    display: "block",
+                    textDecoration: "none",
+                  }}
+                >
+                  {page}
+                </Button>
+              </Link>
             ))}
+            </div>
+            {/*Auth forms links*/}
+              <div className="authLinksContainer">
+                <Link to="/auth/signup" className="authLink">
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    fontSize: "20px",
+                    display: "block",
+                    textDecoration: "none",
+                  }}
+                >
+                  Signup
+                  </Button>
+                </Link>
+
+                <Link to="/auth/login" className="authLink">
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    fontSize: "20px",
+                    display: "block",
+                    textDecoration: "none",
+                  }}
+                >
+                  Login
+                  </Button>
+                </Link>
+              </div>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
+            {/*Profile picture and badge*/}
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
+              <Badge color="secondary" overlap="circular" badgeContent=" ">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Badge>
             </Tooltip>
+
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                <Link key={setting} to={`/${setting.toLowerCase()}`} className="authLink">
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography>{setting}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
+              {/* Menu Item calling a Modal with a formularie*/}
+                  <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography><BasicModal/></Typography>
+                  </MenuItem>
+                
             </Menu>
+
           </Box>
-          <Link to="/auth/signup" className="authLink">
-              Signup
-            </Link>
-            <Link to="/auth/login" className="authLink">
-              Log In
-            </Link>
         </Toolbar>
       </Container>
+      
     </AppBar>
   );
 };
