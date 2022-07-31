@@ -40,6 +40,20 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
     },
   },
   typography: {
+    h1: {
+      fontSize: '4rem',
+    },
+    h2: {
+      fontSize: '3.5rem',
+
+      fontFamily: 'Jua',
+    },
+    h3: {
+      fontWeight: 500,
+    },
+    body1: {
+      fontSize: '1rem',
+    },
     fontFamily: [
       'Roboto',
       '"Helvetica Neue"',
@@ -58,28 +72,19 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
     },
   },
   typography: {
-    h2: {
-      fontSize: '5.1rem',
-      lineHeight: 1.19,
-      fontWeight: 600,
+    h1: {
+      fontSize: '4rem',
     },
-    h4: {
-      fontSize: '2.9rem',
+    h2: {
+      fontSize: '3.5rem',
+      fontWeight: 500,
+      fontFamily: 'Cabin Sketch',
     },
     h3: {
       fontWeight: 500,
     },
-    h1: {
-      fontSize: '6.9rem',
-    },
-    h5: {
-      fontSize: '2.3rem',
-    },
-    h6: {
-      fontSize: '2.1rem',
-    },
     body1: {
-      fontSize: '1.5rem',
+      fontSize: '1rem',
     },
     fontFamily: [
       'Roboto',

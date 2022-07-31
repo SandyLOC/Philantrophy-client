@@ -27,7 +27,7 @@ function Achievements() {
   return (
     <div>
       <Paper elevation={3} sx={{ my: { xs: 1, md: 2 }, p: { xs: 2, md: 3 } }}>
-        <Typography variant="h2" mt={2} mb={6}>Achievements</Typography>
+        <Typography variant="h2" mt={2} mb={5}>Achievements</Typography>
         
         <ThemeProvider theme={iconsTheme} sx={{fontSize: '50px'}}>
           <div className="trophies">

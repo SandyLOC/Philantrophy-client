@@ -70,12 +70,14 @@ export default function Signup({ authenticate }) {
   />*/}
         
         {error && (
-        <Alert severity="error">
+        
           <div className="error-block">
+            <Alert severity="error">
             <p>There was an error submiting the form:</p>
             <p>{error.message}</p>
+            </Alert>
           </div>
-        </Alert>
+        
         )}
         </form>
     </div>

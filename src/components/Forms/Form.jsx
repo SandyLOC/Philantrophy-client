@@ -10,14 +10,14 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useState } from 'react';
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function Form(props) {
 
   const {type} = props
-  //const {handleSubmit} =props
+  const {handleSubmit} =props
 
-
+  /*
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -25,23 +25,30 @@ export default function Form(props) {
       username: data.get('username'),
       password: data.get('password'),
     });
-  };
+  };*/
 
   return (
-      <Container component="main" maxWidth="xs">
+      <Container component="main" sx={{display: 'flex', justifyContent: 'center' }}>
         <CssBaseline />
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            marginTop: 8,
+            marginTop: 7,
+            bgcolor: '#242424',
+            padding: '2em',
+            minWidth: '25vw',
+            borderRadius: '2em',
           }}
         >
+          
           <Avatar color="primary" sx={{ m: 1 }}>
-            <LockOutlinedIcon />
+            {type === "Sign Up" ? <AccountCircleIcon /> :
+              <LockOutlinedIcon />}
           </Avatar>
-          <Typography component="h1" variant="h5">
+
+          <Typography component="h5" variant="h5">
             {type}
           </Typography>
           <Box component="form" onSubmit={() => handleSubmit} noValidate sx={{ mt: 1 }}>

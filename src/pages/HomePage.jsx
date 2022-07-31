@@ -1,11 +1,11 @@
 import "../App.css";
-//import SwipeableTextMobileStepper from "../components/Carousel/SwipeableTextMobileStepper";
+import Carousel from "../components/Carousel/Carousel";
 
 
 function HomePage() {
   return (
     <div className="App">
-
+      <Carousel/>
       {/*<SwipeableTextMobileStepper />*/}
 
     </div>
