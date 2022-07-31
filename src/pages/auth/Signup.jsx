@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { login } from "../services/auth";
+import { signup } from "../../services/auth";
 import { useNavigate } from "react-router-dom";
-import "./Signup";
-import * as PATHS from "../utils/paths";
-import * as USER_HELPERS from "../utils/userToken";
+import "./auth.css";
+import * as PATHS from "../../utils/paths";
+import * as USER_HELPERS from "../../utils/userToken";
+import Form from '../../components/Forms/Form';
+import Alert from '@mui/material/Alert';
 
-export default function LogIn({ authenticate }) {
+export default function Signup({ authenticate }) {
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -16,7 +18,6 @@ export default function LogIn({ authenticate }) {
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-
     return setForm({ ...form, [name]: value });
   }
 
@@ -26,32 +27,37 @@ export default function LogIn({ authenticate }) {
       username,
       password,
     };
-    login(credentials).then((res) => {
+    signup(credentials).then((res) => {
       if (!res.status) {
-        return setError({ message: "Invalid credentials" });
+        // unsuccessful signup
+        console.error("Signup was unsuccessful: ", res);
+        return setError({
+          message: <Alert severity="success">"Signup was unsuccessful! Please check the console."</Alert>,
+        });
       }
+      // successful signup
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
-      navigate(PATHS.HOMEPAGE);
+      navigate("/");
     });
   }
 
   return (
-    <div>
-      <h1>Log In</h1>
-      <form onSubmit={handleFormSubmission} className="signup__form">
-        <label htmlFor="input-username">Username</label>
-        <input
+    <div className="Form">
+      
+      <form onSubmit={handleFormSubmission} className="auth__form">
+      <Form type={"Sign Up"}/>       
+        {/*<input
           id="input-username"
           type="text"
           name="username"
-          placeholder="username"
+          placeholder="Text"
           value={username}
           onChange={handleInputChange}
           required
         />
 
-        <label htmlFor="input-password">Password</label>
+        
         <input
           id="input-password"
           type="password"
@@ -61,19 +67,17 @@ export default function LogIn({ authenticate }) {
           onChange={handleInputChange}
           required
           minLength="8"
-        />
-
+  />*/}
+        
         {error && (
+        <Alert severity="error">
           <div className="error-block">
             <p>There was an error submiting the form:</p>
             <p>{error.message}</p>
           </div>
+        </Alert>
         )}
-
-        <button className="button__submit" type="submit">
-          Submit
-        </button>
-      </form>
+        </form>
     </div>
   );
 }
