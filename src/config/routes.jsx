@@ -1,34 +1,39 @@
 import { Navigate } from "react-router-dom";
 import HomePage from "../pages/HomePage";
-import Login from "../pages/LogIn";
-import Signup from "../pages/Signup";
-import ProtectedPage from "../pages/ProtectedPage";
+import Login from "../pages/auth/LogIn";
+import Signup from "../pages/auth/Signup";
+import ProtectedPage from "../pages/auth/ProtectedPage";
+import Campaigns from "../pages/Campaigns";
 import * as PATHS from "../utils/paths";
 
 const routes = (props) => {
   const { user } = props;
   return [
     {
-      path: PATHS.HOMEPAGE,
+      path: "/",
       element: <HomePage {...props} />,
     },
     {
-      path: PATHS.SIGNUPPAGE,
+      path: "/auth/signup",
       element: <Signup {...props} />,
     },
 
     {
-      path: PATHS.LOGINPAGE,
+      path: "/auth/login",
       element: <Login {...props} />,
     },
     {
-      path: PATHS.PROTECTEDPAGE,
+      path: "/protected",
       element: user ? (
         <ProtectedPage {...props} />
       ) : (
-        <Navigate to={PATHS.LOGINPAGE} replace />
+        <Navigate to="/auth/login" replace />
       ),
     },
+    {
+      path: "/campaigns",
+      element: <Campaigns />
+    }
   ];
 };
 

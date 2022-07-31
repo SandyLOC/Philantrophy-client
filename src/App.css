@@ -1,38 +1,49 @@
+body{
+  width: 100vw;
+  height: 100vh;
+  background-color: inherit;
+ /*
+  background-image: url("https://i0.wp.com/www.theanimalstore.com/wp-content/uploads/2017/01/Feathers-Parrot-Isolated.jpg?ssl=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+   background: rgb(240,33,22);
+  background: linear-gradient(90deg, rgba(240,33,22,1) 0%, rgba(94,170,220,1) 47%, rgba(233,180,61,1) 100%);*/
+}
 .App {
   text-align: center;
+  
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.theme-button{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: end;
+}
+.container-cards{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+}
+.trophies{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 80em;
+  margin: 0 auto;
+}
+.Community{
+  margin: 0 auto;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.achievement-frame{
+  display: flex;
+  padding: 1em;
+  border: 4px double #D69301;
+  border-radius: 50%;
+  background-color: #D9CB04;
+  margin: 1em;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.md-48{
+  font-size: 65px;
 }

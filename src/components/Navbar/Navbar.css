@@ -1,48 +1,33 @@
-nav {
-  display: flex;
-  padding: 1em;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  background: #282c34;
-  font-weight: 600;
+.Navbar{
+  background: rgb(240,33,22);
+  /*background: rgb(240,33,22);
+  background: linear-gradient(90deg, rgba(240,33,22,1) 0%, rgba(94,170,220,1) 47%, rgba(233,180,61,1) 100%);*/
 }
 
-.nav__projectName {
-  color: #e4f9ff;
+.box{
+  display: flex;
+  justify-content: space-between;
+}
+.menu-buttons{
+  display:flex;
+}
+
+.pageLink{
   text-decoration: none;
 }
+.pageLink:hover {
+  color: #fff200;
+}
 
+.authLinksContainer{
+  display: flex;
+  justify-content: end;
+
+}
 .authLink {
-  color: #61dafb;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
+  color: inherit;
 }
 
-.authLink {
-  padding: 1em;
-}
 
-.authLink:hover {
-  color: #ffffff;
-}
-
-.nav-logoutbtn {
-  font-family: inherit;
-  font-weight: inherit;
-  padding: 0.5em 1em;
-  margin-left: 1em;
-  background-color: #5595ff;
-  box-shadow: 0 0 5px 0 aliceblue;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-  color: #e3f2ff;
-  transition: all 0.2s ease-in-out;
-  position: sticky;
-  top: 0;
-}
-
-.nav-logoutbtn:hover {
-  transform: scale(1.05);
-  background-color: #d13e3e;
-}
