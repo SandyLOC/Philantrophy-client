@@ -12,7 +12,7 @@ export default function LogIn({ authenticate }) {
     username: "",
     password: "",
   });
-  const { username, password } = form;
+
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -24,50 +24,31 @@ export default function LogIn({ authenticate }) {
 
   function handleFormSubmission(event) {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
     const credentials = {
-      username,
-      password,
+      username: data.get('username'),
+      password: data.get('password'),
     };
+
     login(credentials).then((res) => {
       if (!res.status) {
         return setError({ message: "Invalid credentials" });
       }
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
-      navigate("/");
+      if(res.data.user.role === "admin"){
+        navigate("/admin")
+       } else { navigate("/") }
+      
     });
   }
 
   return (
     <div>
       
-      <form onSubmit={handleFormSubmission} className="auth__form">
-        <Form type={"Log In"} />
+      <div className="auth__form">
+        <Form type={"Log In"} handleFormSubmission={handleFormSubmission} handleInputChange={handleInputChange} form={form}/>
         
-        {/*
-        <label htmlFor="input-username">Username</label>
-        <input
-          id="input-username"
-          type="text"
-          name="username"
-          placeholder="username"
-          value={username}
-          onChange={handleInputChange}
-          required
-        />
-
-        <label htmlFor="input-password">Password</label>
-        <input
-          id="input-password"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handleInputChange}
-          required
-          minLength="8"
-        />*/}
-
         {error && (
           
           <div className="error-block">
@@ -79,7 +60,7 @@ export default function LogIn({ authenticate }) {
           
         )}
 
-      </form>
+      </div>
     </div>
   );
 }

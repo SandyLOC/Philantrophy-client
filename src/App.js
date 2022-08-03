@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useEffect, useState} from "react";
 import LoadingComponent from "./components/Loading";
 import Navbar from "./components/Navbar/Navbar";
 import { getLoggedIn, logout } from "./services/auth";
+//Routes
+import { Routes, Route, useNavigate } from "react-router-dom";
 import * as USER_HELPERS from "./utils/userToken";
 //Pages
 import HomePage from "./pages/HomePage";
@@ -15,6 +16,7 @@ import Favorites from "./pages/Favorites";
 import Copyright from "./components/Copyright";
 import Achievements from "./pages/Achievements";
 import CommunityPhotos from "./pages/CommunityPhotos";
+import EditForm from "./components/Forms/EditForm";
 
 //Theme imports
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -22,6 +24,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import IconButton from '@mui/material/IconButton';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Admin from "./pages/Admin";
+import Details from "./pages/Details";
+import Profile from "./pages/Profile";
 
 //Theme variables
  const light = {
@@ -46,7 +51,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
     h2: {
       fontSize: '3.5rem',
 
-      fontFamily: 'Jua',
+      fontFamily: ['Jua', 'Cabin Sketch'],
     },
     h3: {
       fontWeight: 500,
@@ -95,6 +100,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 };
 
 export default function App() {
+  //Theme variables
   const [theme, setTheme] = useState(true);
   const icon = !theme ? <Brightness7Icon /> : <Brightness4Icon />;
   const appliedTheme = createTheme(theme ? light : dark);
@@ -102,6 +108,8 @@ export default function App() {
   //User authentication
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const accessToken = USER_HELPERS.getUserToken();
@@ -131,6 +139,7 @@ export default function App() {
       }
       USER_HELPERS.removeUserToken();
       setIsLoading(false);
+      navigate("/auth/login")
       return setUser(null);
     });
   }
@@ -157,20 +166,26 @@ export default function App() {
         <Container maxWidth="lg">
           
           <Routes>
-          {/*{routes({ user, authenticate, handleLogout }).map((route) => (
-          <Route key={route.path} path={route.path} element={route.element} />
-          ))}*/}
-
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage user={user}/>} />
             <Route path="/countries" element={<Countries />}/>
-            <Route path="/campaigns" element={<Campaigns />}/>
+            <Route path="/campaigns" element={<Campaigns user={user}/>}/>
             <Route path="/community" element={<CommunityPhotos />}/>
             <Route path="/achievements" element={<Achievements />}/>
             {/*User Routes*/}
             <Route path="/favorites" element={<Favorites />}/>
             {/*Authentication routes*/}
             <Route path="/auth/login" element={<LogIn />}/>
-            <Route path="/auth/signup" element={<Signup />}/>
+            <Route path="/auth/signup" element={<Signup authenticate={authenticate}/>}/>
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/profile" element={<Profile user={user}/>} />
+            {/*CRUD routes*/}
+            <Route path="/campaigns/:campaignId" element={<Details user={user}/>} />
+            <Route path="/campaigns/edit/:campaignId" element={<EditForm/>} />
+            <Route path="/campaigns/delete/:campaignId" />
+            {/*{routes({ user, authenticate, handleLogout }).map((route) => (
+              <Route key={route.path} path={route.path} element={route.element} />
+            ))}*/}
+      
         </Routes>
         <Copyright />
       </Container>

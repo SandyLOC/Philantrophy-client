@@ -11,38 +11,31 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useState } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Paper from '@mui/material/Paper';
 
 export default function Form(props) {
-
-  const {type} = props
-  const {handleSubmit} =props
-
-  /*
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    return({
-      username: data.get('username'),
-      password: data.get('password'),
-    });
-  };*/
-
+ console.log(props)
+  const { type, form, handleFormSubmission, handleInputChange } = props
+  const {username, email, password } = form
+  
   return (
       <Container component="main" sx={{display: 'flex', justifyContent: 'center' }}>
         <CssBaseline />
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
             marginTop: 7,
-            bgcolor: '#242424',
+            bgcolor: 'inherit',
             padding: '2em',
-            minWidth: '25vw',
+            minWidth: '30vw',
             borderRadius: '2em',
           }}
         >
-          
+          <Paper elevation={3} sx={{ 
+            p: { xs: 2, md: 3 },
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center' 
+            }}>
           <Avatar color="primary" sx={{ m: 1 }}>
             {type === "Sign Up" ? <AccountCircleIcon /> :
               <LockOutlinedIcon />}
@@ -51,16 +44,17 @@ export default function Form(props) {
           <Typography component="h5" variant="h5">
             {type}
           </Typography>
-          <Box component="form" onSubmit={() => handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleFormSubmission} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
               fullWidth
-              id="user"
+              id="username"
               label="Username"
-              name="user"
-              autoComplete="user"
-              
+              name="username"
+              value={username}
+              onChange={handleInputChange}
+              autoComplete="username"
               autoFocus
             />
             {type === "Sign Up" &&
@@ -71,8 +65,9 @@ export default function Form(props) {
               id="email"
               label="Email"
               name="email"
+              value={email}
+              onChange={handleInputChange}
               autoComplete="email"
-              
               autoFocus
             />}
             <TextField
@@ -83,8 +78,9 @@ export default function Form(props) {
               label="Password"
               type="password"
               id="password"
+              value={password}
+              onChange={handleInputChange}
               autoComplete="current-password"
-              
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -94,13 +90,13 @@ export default function Form(props) {
               type="submit"
               fullWidth
               variant="contained"
-              
               sx={{ mt: 3, mb: 2}}
             >
               Submit
             </Button>
 
           </Box>
+          </Paper>
         </Box>
 
       </Container>

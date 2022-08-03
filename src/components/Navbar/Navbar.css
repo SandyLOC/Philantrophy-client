@@ -1,5 +1,4 @@
 .Navbar{
-  background: rgb(240,33,22);
   /*background: rgb(240,33,22);
   background: linear-gradient(90deg, rgba(240,33,22,1) 0%, rgba(94,170,220,1) 47%, rgba(233,180,61,1) 100%);*/
 }
@@ -21,7 +20,7 @@
 
 .authLinksContainer{
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 
 }
 .authLink {
@@ -29,5 +28,8 @@
   transition: color 0.2s ease-in-out;
   color: inherit;
 }
-
+.toucan-logo {
+  max-width: 3.2em;
+  margin-right: 2em;
+}
 

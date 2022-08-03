@@ -1,7 +1,7 @@
 body{
   width: 100vw;
   height: 100vh;
-    background-color: inherit;
+
  /*
   background-image: url("https://i0.wp.com/www.theanimalstore.com/wp-content/uploads/2017/01/Feathers-Parrot-Isolated.jpg?ssl=1");
   background-repeat: no-repeat;
@@ -16,14 +16,9 @@ body{
 }
 .theme-button{
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
-.container-cards{
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
 
-}
 .trophies{
   display: flex;
   flex-wrap: wrap;
