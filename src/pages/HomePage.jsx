@@ -1,13 +1,16 @@
 import "../App.css";
-//import SwipeableTextMobileStepper from "../components/Carousel/SwipeableTextMobileStepper";
+import Typography from "@mui/material/Typography";
+import Carousel from "../components/Carousel/Carousel";
 
 
-function HomePage() {
+function HomePage(props) {
+
+
   return (
     <div className="App">
-
-      {/*<SwipeableTextMobileStepper />*/}
-
+      <Typography variant="h2" mt={2} mb={1}>Philantrophy</Typography>
+      <Carousel/>
+    
     </div>
   );
 }

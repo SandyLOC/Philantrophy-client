@@ -4,16 +4,16 @@ import Card  from '../Card/Card';
 import Box from '@mui/material/Box';
 
 
-export default function ReviewCampaign() {
+export default function ReviewCampaign(props) {
   return (
-    <React.Fragment>
+    <div>
       <Typography variant="h6" gutterBottom>
         Preview
       </Typography>
       <Box sx={{display: 'flex', justifyContent: 'center'}}>
-      <Card/>
+      <Card {...props}/>
 
       </Box>
-    </React.Fragment>
+    </div>
   );
 }

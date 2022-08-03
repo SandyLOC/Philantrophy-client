@@ -1,41 +1,35 @@
 import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import { Grid, TextField, InputLabel, MenuItem } from '@mui/material';
+import { FormControl, Select } from '@mui/material';
+import DatePicker from '../DatePicker'; 
 
-export default function BasicForm() {
+export default function BasicForm(props) {
 
-  const [country, setCountry] = React.useState('');
-
-  const handleChange = (event) => {
-    setCountry(event.target.value);
-  };
+  const { campaign, handleChange, handleDate, date  } = props
 
   return (
     <React.Fragment>
-      <Grid container spacing={4} mt={2}>
-        <Grid item xs={12} sm={7}>
+      <Grid container spacing={3} mt={1}>
+        <Grid item xs={12} sm={12}>
           <TextField
             required
             id="name"
-            name="name"
             label="Campaign name"
+            name="name"
+            value={campaign.name}
+            onChange={handleChange}
             fullWidth
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} sm={5}>
+        <Grid item xs={12} sm={6}>
         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-standard-label">Country</InputLabel>
+        <InputLabel id="location-label">Country</InputLabel>
         <Select
           required
-          labelId="demo-simple-select-standard-label"
           id="location"
-          value={country}
+          name="location"
+          value={campaign.location}
           onChange={handleChange}
           label="location"
         >
@@ -45,12 +39,35 @@ export default function BasicForm() {
         </Select>
       </FormControl>
       </Grid>
+      <Grid item xs={12} sm={6}>
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="category-label">Category</InputLabel>
+        <Select
+          required
+          id="category"
+          name="category"
+          value={campaign.category}
+          onChange={handleChange}
+          label="category"
+        >
+          <MenuItem value={'people'}>People</MenuItem>
+          <MenuItem value={'animals'}>Animals</MenuItem>
+          <MenuItem value={'forestry'}>Forestry</MenuItem>
+          <MenuItem value={'beautify'}>Beautify</MenuItem>
+        </Select>
+      </FormControl>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+      <DatePicker handleDate={handleDate} date={date}/>
+      </Grid>
         <Grid item xs={12}>
           <TextField
             required
-            id="address1"
-            name="address1"
-            label="Address line 1"
+            id="address"
+            name="address"
+            label="Address"
+            value={campaign.address}
+            onChange={handleChange}
             fullWidth
             autoComplete="shipping address-line1"
             variant="standard"
@@ -63,6 +80,9 @@ export default function BasicForm() {
           id="description"
           label="Description"
           multiline
+          name="description"
+          value={campaign.description}
+          onChange={handleChange}
           rows={4}
           fullWidth
           variant="standard"

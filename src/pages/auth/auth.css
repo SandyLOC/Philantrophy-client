@@ -1,12 +1,10 @@
-.Form{
 
-}
-form.auth__form {
+.auth__form {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-content: center;
-  max-width: 350px;
+  max-width: 30em;
   margin: 0 auto;
 }
 

@@ -5,18 +5,22 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-export default function DetailsForm() {
+export default function DetailsForm(props) {
+
+  const { campaign, handleChange } = props
+
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
 
-      </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <TextField
             required
-            id="url"
+            id="picture"
             label="Image URL"
+            name="picture"
+            value={campaign.picture}
+            onChange={handleChange}
             fullWidth
             variant="standard"
           />
@@ -28,6 +32,9 @@ export default function DetailsForm() {
             label="Will be there an Ice Breaker?, please describe"
             multiline
             rows={2}
+            name="iceBreak"
+            value={campaign.iceBreak}
+            onChange={handleChange}
             fullWidth
             variant="standard"
           />
@@ -37,6 +44,7 @@ export default function DetailsForm() {
           <FormControlLabel
             control={<Checkbox color="secondary" name="achievement" value="true" />}
             label="Give an Achievement to Volunteers!"
+            onChange={handleChange}
           />
         </Grid>
       </Grid>

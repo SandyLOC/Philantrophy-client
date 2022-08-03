@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import StepCreation from './Forms/StepCreation';
@@ -18,13 +17,14 @@ const style = {
 };
 
 export default function BasicModal(props) {
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <span onClick={handleOpen}>Create Campaign</span>
+      <div onClick={handleOpen}>Create Campaign</div>
         <Modal
         open={open}
         onClose={handleClose}
@@ -32,10 +32,10 @@ export default function BasicModal(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}></Typography>
            
-          <StepCreation />
-          </Typography>
+          <StepCreation {...props}/>
+          
         </Box>
       </Modal>
     </div>

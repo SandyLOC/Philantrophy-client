@@ -8,16 +8,19 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import Divider from '@mui/material/Divider';
+
+//Icons
+import MenuIcon from "@mui/icons-material/Menu";
 import ForestIcon from "@mui/icons-material/Forest";
 import HomeIcon from "@mui/icons-material/Home";
+import Trophy from "./toucan-world.png"
 //Badge
-import Stack from "@mui/material/Stack";
 import Badge from "@mui/material/Badge";
 import BasicModal from "../BasicModal";
 
@@ -25,7 +28,11 @@ import BasicModal from "../BasicModal";
 const pages = ["Countries", "Campaigns", "Community", "Achievements"];
 const settings = ["Profile", "Account", "Favorites", "Logout"];
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+  //User properties from the user session
+  const { user, handleLogout } = props
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -52,7 +59,8 @@ const Navbar = () => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <ForestIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <img src={Trophy} alt="logo" className="toucan-logo"/>
+          {/*<ForestIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />*/}
           <Typography
             variant="h4"
             noWrap
@@ -144,8 +152,8 @@ const Navbar = () => {
           >
             PhilanTrophy
           </Typography>
-          {/*Map to create the pages buttons*/}
 
+          {/*Map to create the pages buttons*/}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} className="box">
             <div className="menu-buttons">
             {pages.map((page, index) => (
@@ -167,6 +175,10 @@ const Navbar = () => {
               </Link>
             ))}
             </div>
+
+            {/*Show and hide sign up and login buttons depending on the user session*/}
+            {!user && (
+              <>
             {/*Auth forms links*/}
               <div className="authLinksContainer">
                 <Link to="/auth/signup" className="authLink">
@@ -199,18 +211,29 @@ const Navbar = () => {
                   </Button>
                 </Link>
               </div>
+              </>
+            )}
+
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             {/*Profile picture and badge*/}
+            {user && (
+            <Box sx={{ flexGrow: 1, display: "flex" }}>
+            <Typography variant="h6" textAlign="center" sx={{mr: 2}}>
+              {user.username}
+            </Typography>
+            
+            
             <Tooltip title="Open settings">
               <Badge color="secondary" overlap="circular" badgeContent=" ">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Remy Sharp" src={user.picture} />
                 </IconButton>
               </Badge>
             </Tooltip>
-
+            </Box>
+          )}
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -230,15 +253,24 @@ const Navbar = () => {
               {settings.map((setting) => (
                 <Link key={setting} to={`/${setting.toLowerCase()}`} className="authLink">
                   <MenuItem onClick={handleCloseUserMenu}>
-                    <Typography>{setting}</Typography>
+                    {setting === "Logout" ? (<span onClick={handleLogout}><Typography>{setting}</Typography></span>) 
+                    : <Typography>{setting}</Typography>}
+                    {/*props?.user?.username*/}
+                    
                   </MenuItem>
                 </Link>
               ))}
+
               {/* Menu Item calling a Modal with a formularie*/}
+              {user.role === "admin"  && 
+              <React.Fragment>
+              <Divider />
                   <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography><BasicModal/></Typography>
+                  <Typography><BasicModal user={user}/></Typography>
                   </MenuItem>
-                
+              </React.Fragment>
+              }
+                  
             </Menu>
 
           </Box>
