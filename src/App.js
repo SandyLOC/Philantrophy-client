@@ -177,7 +177,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage user={user}/>} />
             <Route path="/countries" element={<Countries />}/>
-            <Route path="/campaigns" element={<Campaigns user={user}/>}/>
+            <Route path="/campaigns" element={<Campaigns user={user} setUser={setUser}/>}/>
             <Route path="/community" element={<CommunityPhotos />}/>
             <Route path="/achievements" element={<Achievements />}/>
             {/*User Routes*/}

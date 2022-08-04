@@ -10,13 +10,19 @@ import { Link } from "react-router-dom";
 export default function MultiActionAreaCard(props) {
 
   const { campaign, user, hideText } = props
+  //console.log(user)
+
+  const checkFavorite = () => {
+    console.log(user.favorites.includes(campaign._id))
+    return user.favorites.includes(campaign._id)
+  }
 
   return (
     <Card  sx={{ maxWidth: 345}}>
       <CardActionArea>
     
       <div className="favorites-icon">
-      <FavoritesIcon campaignId={campaign._id} user={user}/>
+      <FavoritesIcon campaignId={campaign._id} {...props} isFavorite={checkFavorite}/>
       </div>
 
         <CardMedia

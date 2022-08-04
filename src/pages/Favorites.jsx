@@ -16,7 +16,7 @@ function Favorites(props) {
         {favorites.map((campaign, index) => {
         return(
           <Grid item xs={4} sm={4} key={index}>
-          <Card  campaign={campaign} user={user} hideText={true}/>
+            <Card  campaign={campaign} user={user} hideText={true}/>
           </Grid>
         )
       })}

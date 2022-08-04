@@ -5,24 +5,23 @@ import {useState, useEffect } from 'react';
 
 
 function Campaigns(props) {
-
+console.log(props)
   const [campaigns, setCampaign] = useState([])
-
-  const { user } = props
 
   useEffect(() => {
   //Connect to the server
   fetch(`${process.env.REACT_APP_SERVER_URL}/campaigns`)
   .then(data => data.json())
   .then(campaign => {
+    console.log("Render, campaign", campaign)
     setCampaign(campaign)
   })
   .catch(console.log)
 
-}, [])
+}, [props])
 
   return (
-    <Grid spacing={3} mt={1}>
+    <Grid  mt={1}>
       <Typography variant="h2" mt={2} mb={4}>CAMPAIGNS</Typography>
         
         <Grid container spacing={2}>
@@ -30,7 +29,7 @@ function Campaigns(props) {
         {campaigns.map(campaign => {
         return(
           <Grid item xs={4} sm={4} key={campaign._id}>
-            <Card  campaign={campaign} user={user} />
+            <Card  campaign={campaign} {...props} />
           </Grid>
         )
       })}
