@@ -8,7 +8,7 @@ function HomePage(props) {
 
   return (
     <div className="App">
-      <Typography variant="h2" mt={2} mb={1}>Philantrophy</Typography>
+      <Typography variant="h1" mt={2} mb={1}>PHILANTROPHY</Typography>
       <Carousel/>
     
     </div>

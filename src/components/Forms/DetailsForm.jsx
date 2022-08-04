@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import PopOver from '../PopOver';
 
 export default function DetailsForm(props) {
 
@@ -41,11 +41,7 @@ export default function DetailsForm(props) {
         </Grid>
 
         <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="achievement" value="true" />}
-            label="Give an Achievement to Volunteers!"
-            onChange={handleChange}
-          />
+          <PopOver {...props}/>
         </Grid>
       </Grid>
     </React.Fragment>

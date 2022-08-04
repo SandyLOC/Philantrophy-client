@@ -43,10 +43,15 @@ import Profile from "./pages/Profile";
       secondary: '#3f3f3f',
       disabled: '#646364',
     },
+    background: {
+      default: '#fbf2ee',
+      //paper: 'rgba(102,120,62,0.22)',
+    },
   },
   typography: {
     h1: {
       fontSize: '4rem',
+      fontFamily: ['Jua', 'Cabin Sketch'],
     },
     h2: {
       fontSize: '3.5rem',
@@ -54,6 +59,9 @@ import Profile from "./pages/Profile";
       fontFamily: ['Jua', 'Cabin Sketch'],
     },
     h3: {
+      fontWeight: 500,
+    },
+    h5: {
       fontWeight: 500,
     },
     body1: {
@@ -79,6 +87,7 @@ import Profile from "./pages/Profile";
   typography: {
     h1: {
       fontSize: '4rem',
+      fontFamily: ['Jua', 'Cabin Sketch'],
     },
     h2: {
       fontSize: '3.5rem',
@@ -172,9 +181,9 @@ export default function App() {
             <Route path="/community" element={<CommunityPhotos />}/>
             <Route path="/achievements" element={<Achievements />}/>
             {/*User Routes*/}
-            <Route path="/favorites" element={<Favorites />}/>
+            <Route path="/favorites" element={<Favorites user={user}/>}/>
             {/*Authentication routes*/}
-            <Route path="/auth/login" element={<LogIn />}/>
+            <Route path="/auth/login" element={<LogIn authenticate={authenticate}/>}/>
             <Route path="/auth/signup" element={<Signup authenticate={authenticate}/>}/>
             <Route path="/admin" element={<Admin />} />
             <Route path="/profile" element={<Profile user={user}/>} />
@@ -182,9 +191,6 @@ export default function App() {
             <Route path="/campaigns/:campaignId" element={<Details user={user}/>} />
             <Route path="/campaigns/edit/:campaignId" element={<EditForm/>} />
             <Route path="/campaigns/delete/:campaignId" />
-            {/*{routes({ user, authenticate, handleLogout }).map((route) => (
-              <Route key={route.path} path={route.path} element={route.element} />
-            ))}*/}
       
         </Routes>
         <Copyright />

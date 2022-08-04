@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Ratings from '../components/Ratings';
-import Favorites from '../components/Favorites';
+import FavoritesIcon from '../components/FavoritesIcon';
 import Dial from '../components/Dial';
 import Alert from '@mui/material/Alert';
 
@@ -65,7 +65,7 @@ const navigate = useNavigate()
       <CardActionArea>
     
       <div className="favorites-icon">
-      <Favorites />
+      <FavoritesIcon />
       </div>
 
         <CardMedia

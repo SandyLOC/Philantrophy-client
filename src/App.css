@@ -1,7 +1,7 @@
 body{
   width: 100vw;
   height: 100vh;
-
+  
  /*
   background-image: url("https://i0.wp.com/www.theanimalstore.com/wp-content/uploads/2017/01/Feathers-Parrot-Isolated.jpg?ssl=1");
   background-repeat: no-repeat;
@@ -19,6 +19,12 @@ body{
   justify-content: flex-end;
 }
 
+.Community{
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
 .trophies{
   display: flex;
   flex-wrap: wrap;
@@ -26,12 +32,6 @@ body{
   max-width: 80em;
   margin: 0 auto;
 }
-.Community{
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-}
-
 .achievement-frame{
   display: flex;
   padding: 0.5em;
@@ -40,9 +40,26 @@ body{
   background-color: #D9CB04;
   margin: 0.5em;
 }
-.md-48{
+.trophies .md-48{
   font-size: 50px;
 }
+.badges{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1em;
+}
+.badges .achievement-frame{
+  display: flex;
+  padding: 0.2em;
+  border: 4px double #D69301;
+  border-radius: 50%;
+  background-color: #D9CB04;
+  margin: 0.3em;
+}
+.badges .md-48{
+  font-size: 25px;
+}
 .countries img{
-  max-width: 40vw;
+  max-width: 60vw;
 }
