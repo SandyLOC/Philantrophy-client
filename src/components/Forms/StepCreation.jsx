@@ -20,7 +20,7 @@ export default function StepCreation(props) {
 
   function handleChange(event) {
       const { name, value } = event.target;
-      console.log({...campaign, [name]: value})
+
       return setCampaign({ ...campaign, [name]: value });
     }
 
@@ -63,7 +63,7 @@ export default function StepCreation(props) {
       case 0:
         return <BasicForm handleChange={handleChange} handleDate={handleDate} campaign={campaign} date={date}/>;
       case 1:
-        return <DetailsForm handleChange={handleChange} campaign={campaign}/>;
+        return <DetailsForm handleChange={handleChange} campaign={campaign} setCampaign={setCampaign}/>;
       case 2:
         return <ReviewCampaign user={user} campaign={campaign}/>;
       default:
