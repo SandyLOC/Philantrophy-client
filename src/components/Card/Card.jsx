@@ -45,7 +45,7 @@ export default function MultiActionAreaCard(props) {
       </CardActionArea>
       <CardActions className='card-actions'>
         {/*Raitings component*/}
-        <Ratings/>
+        <Ratings campaignId={campaign._id} {...props}/>
 
         <Link to={`/campaigns/${campaign._id}`} className="buttonLink">
         <Button size="small" color="primary">

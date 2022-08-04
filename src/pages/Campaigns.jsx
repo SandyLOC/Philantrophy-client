@@ -13,7 +13,6 @@ console.log(props)
   fetch(`${process.env.REACT_APP_SERVER_URL}/campaigns`)
   .then(data => data.json())
   .then(campaign => {
-    console.log("Render, campaign", campaign)
     setCampaign(campaign)
   })
   .catch(console.log)

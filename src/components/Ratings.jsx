@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import Rating from '@mui/material/Rating';
@@ -46,13 +47,33 @@ IconContainer.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-export default function Ratings() {
+export default function Ratings(props) {
+
+  const { campaignId, user } = props
+ 
+  const handleChange = (rating) => {
+console.log(rating)
+
+      fetch(`${process.env.REACT_APP_SERVER_URL}/campaigns/rate/${campaignId}&${rating}`,{
+        method: "PUT",
+      })
+      .then(datos => datos.json())
+      .then(data => {
+        console.log("rating data", data)
+      })
+      .catch(console.log)
+
+    return
+  }
+
   return (
     <StyledRating
-      name="highlight-selected-only"
-      defaultValue={2}
+      name="ratings"
       IconContainerComponent={IconContainer}
-      getLabelText={(value) => customIcons[value].label}
+      getLabelText={(number) => customIcons[number].label}
+      onChange={(number) => {
+        return handleChange(customIcons[number.target.value].label)
+      }}
       highlightSelectedOnly
     />
   );

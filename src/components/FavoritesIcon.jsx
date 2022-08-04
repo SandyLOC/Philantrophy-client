@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
@@ -9,13 +9,11 @@ const label = { inputProps: { 'aria-label': 'Add to Favorites' } };
 export default function FavoritesIcon(props) {
 
   const { campaignId, user, isFavorite, setUser } = props
-  const [favorite, setFavorite] = useState(isFavorite)
-  const [checked, setChecked] = useState(null)
  
   const handleChange = (e) => {
     const newUser = {...user}
 
-   if(favorite){
+   if(user.favorites.includes(campaignId)){
     removeFavorite()
     const filterFavorites = newUser.favorites.filter(favorite => favorite !== campaignId)
     newUser.favorites = filterFavorites
@@ -33,7 +31,7 @@ export default function FavoritesIcon(props) {
     })
     .then(datos => datos.json())
     .then(data => {
-      console.log(data)
+      console.log("Added to Favorites")
     })
     .catch(console.log)
   }
@@ -56,7 +54,7 @@ export default function FavoritesIcon(props) {
       <Checkbox {...label} 
       icon={<FavoriteBorder />} 
       checkedIcon={<Favorite sx={{color: '#f06292'}}/>} 
-      checked={favorite}
+      checked={user.favorites.includes(campaignId)}
       onChange={handleChange}
       name="favorites"
       />
