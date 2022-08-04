@@ -5,7 +5,7 @@ import {useState, useEffect } from 'react';
 
 
 function Campaigns(props) {
-console.log(props)
+
   const [campaigns, setCampaign] = useState([])
 
   useEffect(() => {

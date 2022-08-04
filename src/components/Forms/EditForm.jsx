@@ -52,9 +52,7 @@ export default function BasicForm(props) {
         e.preventDefault()
         fetch(`${process.env.REACT_APP_SERVER_URL}/campaigns/edit/${campaignId}`,{
             method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(campaign)
         })
         .then(datos => datos.json())
