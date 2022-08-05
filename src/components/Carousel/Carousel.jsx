@@ -14,24 +14,24 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
   {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
+    label: 'Adoption',
     imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+      'https://www.treehugger.com/thmb/sNNyyEiUOyBZ0wV4FTk-Yrm4FzY=/2121x1414/filters:fill(auto,1)/GettyImages-1254804917-85f763ec1e7f4b61b7e9ecddd35fd095.jpg?auto=format&fit=crop&w=400&h=250&q=60',
   },
   {
-    label: 'Bird',
+    label: 'turtle-rescue',
     imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+      'https://www.gob.mx/cms/uploads/image/file/465657/DBmnVRuVoAI6Mzp.jpg',
   },
   {
-    label: 'Bali, Indonesia',
+    label: 'park-cleaning',
     imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
+      'https://thirdsectorsupport.wales/app/uploads/2020/07/group-of-fit-people-picking-up-litter-in-nature-a-W7S63WN-1024x646.jpg?auto=format&fit=crop&w=400&h=250',
   },
   {
-    label: 'Goč, Serbia',
+    label: 'cleaning-our community',
     imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+      'http://www.khayavolunteer.com/images/blog/happy-volunteers1.jpg?auto=format&fit=crop&w=400&h=250&q=60',
   },
 ];
 
