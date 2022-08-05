@@ -9,7 +9,7 @@ function HomePage(props) {
   return (
     <div className="Home">
     <Container maxWidth="100vh">
-    <Typography variant="h1" mt={8} mb={8}>PHILANTROPHY</Typography>
+    <Typography variant="h1" mt={8} mb={6}>PHILANTROPHY</Typography>
     <div className="homeImg">
     
     </div>

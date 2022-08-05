@@ -87,11 +87,11 @@ body{
   max-width: 50vw;
 }
 .Home{
-  min-width: 100vh;
+  min-width: 100vw;
 }
 .homeImg{
   min-height: 30em;
-  min-width: 100vh;
+  min-width: 100vw;
   background-image: url("http://dvipiowa.org/wp-content/uploads/2016/10/dvip-volunteer-transparent.png");
   background-size: contain;
   background-repeat: no-repeat;

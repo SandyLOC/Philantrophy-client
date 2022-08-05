@@ -35,7 +35,7 @@ function Profile(props) {
             justifyContent: 'space-between'
           }}
       >
-        <Paper elevation={0}  mr={8} sx={{ my: { xs: 3, md: 3}, p: 1 }}>
+        <Paper elevation={0}  mr={8} sx={{ my: { xs: 1, md: 1}, p: 1 }}>
         <Grid item xs={12} sm={12} ml={8}>
         <Typography variant="h2" mt={1} mb={4} mr={8}>{user.username}</Typography>
         
