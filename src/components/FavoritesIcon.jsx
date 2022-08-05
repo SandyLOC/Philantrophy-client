@@ -54,7 +54,7 @@ export default function FavoritesIcon(props) {
       <Checkbox {...label} 
       icon={<FavoriteBorder />} 
       checkedIcon={<Favorite sx={{color: '#f06292'}}/>} 
-      checked={user.favorites.includes(campaignId)}
+      checked={user?.favorites?.includes(campaignId)}
       onChange={handleChange}
       name="favorites"
       />

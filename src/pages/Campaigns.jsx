@@ -1,12 +1,15 @@
 import React from 'react';
 import Card from '../components/Card/Card';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Input  } from '@mui/material';
 import {useState, useEffect } from 'react';
-
+import Container from '@mui/material/Container';
 
 function Campaigns(props) {
 
   const [campaigns, setCampaign] = useState([])
+  const [data, setData] = useState([]);
+  const [dataCp, setDataCp] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
   //Connect to the server
@@ -14,12 +17,27 @@ function Campaigns(props) {
   .then(data => data.json())
   .then(campaign => {
     setCampaign(campaign)
+    setDataCp(campaign)
   })
   .catch(console.log)
 
 }, [props])
 
+const updateInput = (e) => {
+  setSearch(e.target.value)
+}
+
+//UseEffect checks the update of the input state
+useEffect(() => {
+  const campaignFilter = dataCp.filter((campaign) => {
+    return campaign.name.toLowerCase().includes(search.toLocaleLowerCase())
+  })
+  setCampaign(campaignFilter)
+}, [search])
+
   return (
+    <Container minWidth="lg">
+            <Input placeholder="Buscar" value={search} onChange={updateInput}/>
     <Grid  mt={1}>
       <Typography variant="h2" mt={2} mb={4}>CAMPAIGNS</Typography>
         
@@ -37,7 +55,7 @@ function Campaigns(props) {
 
       </Grid>
 
-
+      </Container>
   )
 }
 

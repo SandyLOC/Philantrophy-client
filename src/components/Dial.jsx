@@ -23,6 +23,7 @@ export default function Dial(props) {
         ariaLabel="SpeedDial"
         sx={{ position: 'absolute', bottom: 16, right: 16 }}
         icon={<SpeedDialIcon />}
+        direction="left"
       >
           
           <SpeedDialAction

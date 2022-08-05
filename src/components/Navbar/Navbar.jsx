@@ -261,15 +261,15 @@ const Navbar = (props) => {
                 </Link>
               ))}
 
-              {/* Menu Item calling a Modal with a formularie
-              {user.role === "admin"  && */}
+              {/* Menu Item calling a Modal with a formularie*/}
+              {user?.role === "admin"  && 
               <React.Fragment>
               <Divider />
                   <MenuItem onClick={handleCloseUserMenu}>
                   <Typography><BasicModal user={user}/></Typography>
                   </MenuItem>
               </React.Fragment>
-              
+              }
                   
             </Menu>
 

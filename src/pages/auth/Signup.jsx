@@ -5,6 +5,7 @@ import "./auth.css";
 import * as USER_HELPERS from "../../utils/userToken";
 import Form from '../../components/Forms/Form';
 import Alert from '@mui/material/Alert';
+import Container from '@mui/material/Container';
 
 export default function Signup({ authenticate }) {
 
@@ -49,6 +50,7 @@ export default function Signup({ authenticate }) {
   }
 
   return (
+    <Container minWidth="lg">
     <div className="Form">
       
       <div className="auth__form">
@@ -66,5 +68,6 @@ export default function Signup({ authenticate }) {
         )}
         </div>
     </div>
+    </Container>
   );
 }

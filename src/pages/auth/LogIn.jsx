@@ -6,6 +6,7 @@ import * as PATHS from "../../utils/paths";
 import * as USER_HELPERS from "../../utils/userToken";
 import Form from '../../components/Forms/Form';
 import Alert from '@mui/material/Alert';
+import Container from '@mui/material/Container';
 
 export default function LogIn({ authenticate }) {
   const [form, setForm] = useState({
@@ -45,7 +46,7 @@ export default function LogIn({ authenticate }) {
 
   return (
     <div>
-      
+      <Container minWidth="lg">
       <div className="auth__form">
         <Form type={"Log In"} handleFormSubmission={handleFormSubmission} handleInputChange={handleInputChange} form={form}/>
         
@@ -61,6 +62,7 @@ export default function LogIn({ authenticate }) {
         )}
 
       </div>
+      </Container>
     </div>
   );
 }

@@ -11,7 +11,6 @@ import LogIn from "./pages/auth/LogIn";
 import Signup from "./pages/auth/Signup";
 import Campaigns from "./pages/Campaigns";
 import Countries from "./pages/Countries";
-import Container from '@mui/material/Container';
 import Favorites from "./pages/Favorites";
 import Copyright from "./components/Copyright";
 import Achievements from "./pages/Achievements";
@@ -29,52 +28,7 @@ import Details from "./pages/Details";
 import Profile from "./pages/Profile";
 
 //Theme variables
- const light = {
-  palette: {
-    mode: "light",
-    primary: {
-      main: '#66783E',
-    },
-    secondary: {
-      main: '#D69301',
-    },
-    text: {
-      primary: '#121212',
-      secondary: '#3f3f3f',
-      disabled: '#646364',
-    },
-    background: {
-      default: '#fbf2ee',
-      //paper: 'rgba(102,120,62,0.22)',
-    },
-  },
-  typography: {
-    h1: {
-      fontSize: '4rem',
-      fontFamily: ['Jua', 'Cabin Sketch'],
-    },
-    h2: {
-      fontSize: '3.5rem',
-
-      fontFamily: ['Jua', 'Cabin Sketch'],
-    },
-    h3: {
-      fontWeight: 500,
-    },
-    h5: {
-      fontWeight: 500,
-    },
-    body1: {
-      fontSize: '1rem',
-    },
-    fontFamily: [
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-    ].join(','),
-  },
-};
- const dark = {
+  const dark = {
   palette: {
     mode: "dark",
     primary: {
@@ -107,12 +61,57 @@ import Profile from "./pages/Profile";
     ].join(','),
   },
 };
+const light = {
+  palette: {
+    mode: "light",
+    primary: {
+      main: '#66783E',
+    },
+    secondary: {
+      main: '#D69301',
+    },
+    text: {
+      primary: '#121212',
+      secondary: '#3f3f3f',
+      disabled: '#646364',
+    },
+    background: {
+      //default: '#fbf2ee',
+      paper: 'rgba(102,120,62,0.22)',
+    },
+  },
+  typography: {
+    h1: {
+      fontSize: '4rem',
+      fontFamily: ['Jua', 'Cabin Sketch'],
+    },
+    h2: {
+      fontSize: '3.5rem',
+
+      fontFamily: ['Jua', 'Cabin Sketch'],
+    },
+    h3: {
+      fontWeight: 500,
+    },
+    h5: {
+      fontWeight: 500,
+    },
+    body1: {
+      fontSize: '1rem',
+    },
+    fontFamily: [
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+    ].join(','),
+  },
+};
 
 export default function App() {
   //Theme variables
   const [theme, setTheme] = useState(true);
   const icon = !theme ? <Brightness7Icon /> : <Brightness4Icon />;
-  const appliedTheme = createTheme(theme ? light : dark);
+  const appliedTheme = createTheme(theme ? dark : light);
 
   //User authentication
   const [user, setUser] = useState(null);
@@ -172,7 +171,7 @@ export default function App() {
           {icon}
         </IconButton>
         </div>
-        <Container maxWidth="lg">
+
           
           <Routes>
             <Route path="/" element={<HomePage user={user}/>} />
@@ -186,7 +185,7 @@ export default function App() {
             <Route path="/auth/login" element={<LogIn authenticate={authenticate}/>}/>
             <Route path="/auth/signup" element={<Signup authenticate={authenticate}/>}/>
             <Route path="/admin" element={<Admin />} />
-            <Route path="/profile" element={<Profile user={user}/>} />
+            <Route path="/profile" element={<Profile user={user} setUser={setUser}/>} />
             {/*CRUD routes*/}
             <Route path="/campaigns/:campaignId" element={<Details user={user}/>} />
             <Route path="/campaigns/edit/:campaignId" element={<EditForm/>} />
@@ -194,7 +193,7 @@ export default function App() {
       
         </Routes>
         <Copyright />
-      </Container>
+
       </CssBaseline >
       </ThemeProvider>
       

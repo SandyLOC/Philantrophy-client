@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { Avatar, Button, Typography } from '@mui/material';
-import { FormControlLabel, TextField, Checkbox } from '@mui/material';
+import { Avatar, Button, Typography, TextField } from '@mui/material';
 import { Container, Box, Paper, CssBaseline } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -76,10 +74,7 @@ export default function Form(props) {
               onChange={handleInputChange}
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+
             <Button
               type="submit"
               fullWidth
