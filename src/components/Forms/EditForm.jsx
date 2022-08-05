@@ -112,10 +112,10 @@ export default function BasicForm(props) {
           label="category"
           value={category}
         >
-          <MenuItem value={'people'}>People</MenuItem>
-          <MenuItem value={'animals'}>Animals</MenuItem>
-          <MenuItem value={'forestry'}>Forestry</MenuItem>
-          <MenuItem value={'beautify'}>Beautify</MenuItem>
+          <MenuItem value={'People'}>People</MenuItem>
+          <MenuItem value={'Animals'}>Animals</MenuItem>
+          <MenuItem value={'Forestry'}>Forestry</MenuItem>
+          <MenuItem value={'Beautify'}>Beautify</MenuItem>
         </Select>
       </FormControl>
       </Grid>

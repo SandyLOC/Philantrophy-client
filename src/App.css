@@ -33,16 +33,32 @@ body{
   max-width: 80em;
   margin: 0 auto;
 }
-.achievement-frame{
+.achievement-frame-gold{
   display: flex;
-  padding: 0.5em;
+  padding: 0.3em;
   border: 4px double #D69301;
   border-radius: 50%;
   background-color: #D9CB04;
   margin: 0.5em;
 }
+.achievement-frame-silver{
+  display: flex;
+  padding: 0.3em;
+  border: 4px double rgb(80, 80, 80);
+  border-radius: 50%;
+  background-color: silver;
+  margin: 0.5em;
+}
+.achievement-frame-bronze{
+  display: flex;
+  padding: 0.3em;
+  border: 4px double rgb(80, 80, 80);
+  border-radius: 50%;
+  background-color: rgb(199, 131, 48);
+  margin: 0.5em;
+}
 .trophies .md-48{
-  font-size: 50px;
+  font-size: 48px;
   color: black;
 }
 .badges{

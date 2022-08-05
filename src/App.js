@@ -77,7 +77,7 @@ const light = {
     },
     background: {
       //default: '#fbf2ee',
-      paper: 'rgba(102,120,62,0.22)',
+
     },
   },
   typography: {
