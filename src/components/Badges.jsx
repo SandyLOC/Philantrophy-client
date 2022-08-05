@@ -1,14 +1,12 @@
 import React from 'react'
-import { useState } from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 
 function Badges(props) {
 
    const {setCampaign, campaign} = props
 
-   const handleSelection = (a) => {
-    console.log('handlea')
-    setCampaign({...campaign, achievement: a} )
+   const handleSelection = (selected) => {
+    setCampaign({...campaign, achievement: selected} )
    }
   const trophies = [
     'celebration', 'camera_alt', 'catching_pokemon', 'child_care', 'emoji_nature', 'accessibility', 'ac_unit', 

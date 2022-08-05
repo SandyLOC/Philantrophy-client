@@ -71,11 +71,13 @@ const navigate = useNavigate()
         flag = 'https://cdn.icon-icons.com/icons2/1694/PNG/512/mxmexicoflag_111665.png'
         break;
       case ("CAN"):
-        flag = '"https://cdn.icon-icons.com/icons2/1694/PNG/512/cacanadaflag_111931.png"'
+        flag = 'https://cdn.icon-icons.com/icons2/1694/PNG/512/cacanadaflag_111931.png'
         break;
       case ("USA"):
         flag = 'https://cdn.icon-icons.com/icons2/1694/PNG/512/usunitedstatesflag_111929.png'
         break;
+      default:
+        flag='https://cdn.icon-icons.com/icons2/2104/PNG/512/location_icon_129042.png'
     }
     return flag;
 
@@ -129,7 +131,7 @@ const navigate = useNavigate()
         <Ratings/>
         
         {campaign.achievement && (
-          <div className="achievement-frame">
+          <div className="achievement-frame-gold">
             <span class="material-icons md-48">{campaign.achievement}</span>
           </div>
         )}

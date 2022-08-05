@@ -19,7 +19,7 @@ import Divider from '@mui/material/Divider';
 import MenuIcon from "@mui/icons-material/Menu";
 import ForestIcon from "@mui/icons-material/Forest";
 import HomeIcon from "@mui/icons-material/Home";
-import Trophy from "./toucan-world.png"
+import Trophy from "../../Images/Philantrophy.png"
 //Badge
 import Badge from "@mui/material/Badge";
 import BasicModal from "../BasicModal";
@@ -59,8 +59,10 @@ const Navbar = (props) => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+        <Box sx={{ maxWidth:'6em', flexGrow: 1, display: { xs: "none", md: "flex" } }}>
           <img src={Trophy} alt="logo" className="toucan-logo"/>
-          {/*<ForestIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />*/}
+          </Box>
+          
           <Typography
             variant="h4"
             noWrap

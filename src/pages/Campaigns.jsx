@@ -36,10 +36,13 @@ useEffect(() => {
 }, [search])
 
   return (
-    <Container minWidth="lg">
-            <Input placeholder="Buscar" value={search} onChange={updateInput}/>
+    <Container minWidth="lg">   
+    <div className="search">
+    <Input placeholder="Search Campaign" value={search} onChange={updateInput} fullWidth/> 
+    </div>
     <Grid  mt={1}>
-      <Typography variant="h2" mt={2} mb={4}>CAMPAIGNS</Typography>
+
+      <Typography variant="h2" mt={2} mb={4} >CAMPAIGNS</Typography>
         
         <Grid container spacing={2}>
           

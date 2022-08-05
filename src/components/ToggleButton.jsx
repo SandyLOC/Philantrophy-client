@@ -1,5 +1,4 @@
 import * as React from 'react';
-import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useState } from 'react';
 import Badges from './Badges';
@@ -7,7 +6,6 @@ import Badges from './Badges';
 export default function Toggle(props) {
 
   const [achievement, setAchievement] = useState('');
-  const [badges, setBadges] = useState([])
 
   const handleChange = (event, badge) => {
     setAchievement(badge);

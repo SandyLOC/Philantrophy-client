@@ -4,10 +4,10 @@ import { Grid, MenuItem, Box, Typography, Button } from '@mui/material';
 import { useParams, useNavigate } from 'react-router-dom';
 import {useState, useEffect } from 'react';
 import DatePicker from '../DatePicker';
-
+import PopOver from '../PopOver';
 
 export default function BasicForm(props) {
-
+console.log(props)
     const navigate = useNavigate();
 
     const { campaignId } = useParams()
@@ -58,9 +58,10 @@ export default function BasicForm(props) {
         .then(datos => datos.json())
         .then(campaignData => {
             setCampaign(campaignData)
+            navigate('/campaigns')
         })
         .catch(console.log)
-        navigate('/campaigns')
+       
     }
 
   return (
@@ -181,7 +182,9 @@ export default function BasicForm(props) {
             focused
           />
         </Grid>
-        
+        <Grid item xs={5}>
+          <PopOver {...props} campaign={campaign} setCampaign={setCampaign}/>
+        </Grid>
       </Grid>
         <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2}}>
             Submit
