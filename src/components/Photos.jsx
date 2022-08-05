@@ -2,7 +2,7 @@ import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-
+import Paws from '../Images/4paws.jpg';
 export default function Photos() {
   return (
     <ImageList sx={{ width: '70vw', height: '70vh' }}
@@ -52,15 +52,16 @@ const itemData = [
     author: '@nolanissac',
   },
   {
+    img: Paws,
+    title: 'Adoption Campaign',
+    author: '@Sandy123',
+  },
+  {
     img: 'https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     title: 'Beach cleaning',
     author: '@hjrc33',
   },
-  {
-    img: 'https://kdrecruitment.co.uk/wp-content/uploads/2020/05/MVIMG_20191130_112717-1080x675.jpg',
-    title: 'Honey',
-    author: '@arwinneil',
-  },
+
   {
     img: 'https://images.unsplash.com/photo-1598129982257-bede1760b4a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     title: 'Graham Park restoration',
@@ -77,9 +78,9 @@ const itemData = [
     author: '@silverdalex',
   },
   {
-    img: 'https://images.unsplash.com/photo-1588130739798-136cb52da55c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    title: 'Build bench',
-    author: '@shelleypauls',
+    img: 'https://kdrecruitment.co.uk/wp-content/uploads/2020/05/MVIMG_20191130_112717-1080x675.jpg',
+    title: 'Honey',
+    author: '@arwinneil',
   },
   {
     img: 'https://images.unsplash.com/photo-1584062134595-dacde0a2336d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1033&q=80',
@@ -113,7 +114,7 @@ const itemData = [
   },
   {
     img: 'https://images.unsplash.com/photo-1547082688-9077fe60b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2532&q=80',
-    title: 'Helath Campaign',
+    title: 'Health Campaign',
     author: '@silverdalex',
   },
   {

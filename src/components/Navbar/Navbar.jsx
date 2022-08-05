@@ -26,7 +26,7 @@ import BasicModal from "../BasicModal";
 
 
 const pages = ["Countries", "Campaigns", "Community", "Achievements"];
-const settings = ["Profile", "Account", "Favorites", "Logout"];
+const settings = ["Profile", "Account", "Logout"];
 
 const Navbar = (props) => {
 

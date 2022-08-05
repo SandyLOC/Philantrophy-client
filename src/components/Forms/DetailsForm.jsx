@@ -29,7 +29,7 @@ export default function DetailsForm(props) {
         <Grid item xs={12}>
           <TextField
             id="iceBreak"
-            label="Will be there an Ice Breaker?, please describe"
+            label="Will be there an Ice Breaker? Please describe."
             multiline
             rows={2}
             name="iceBreak"

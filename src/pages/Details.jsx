@@ -118,7 +118,7 @@ const navigate = useNavigate()
           <Typography variant="h6" color="text.secondary" mt={3}>Category: {campaign.category}</Typography>
           <Typography variant="body1" color="text.secondary" mt={3}>Date: {moment(campaign.date).format('DD/MM/YYYY HH:mm')}</Typography>
           {campaign.iceBreak && (
-          <Typography variant="body1" color="text.secondary" mt={6}>Ice Break: {campaign.iceBreak}</Typography>
+          <Typography variant="body1" color="text.secondary" mt={6}>Ice Breaker: {campaign.iceBreak}</Typography>
           )}
           </Grid>
 

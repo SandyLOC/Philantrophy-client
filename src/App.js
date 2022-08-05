@@ -179,12 +179,11 @@ export default function App() {
             <Route path="/campaigns" element={<Campaigns user={user} setUser={setUser}/>}/>
             <Route path="/community" element={<CommunityPhotos />}/>
             <Route path="/achievements" element={<Achievements />}/>
-            {/*User Routes*/}
-            <Route path="/favorites" element={<Favorites user={user}/>}/>
             {/*Authentication routes*/}
             <Route path="/auth/login" element={<LogIn authenticate={authenticate}/>}/>
             <Route path="/auth/signup" element={<Signup authenticate={authenticate}/>}/>
             <Route path="/admin" element={<Admin />} />
+            {/*User Routes*/}
             <Route path="/profile" element={<Profile user={user} setUser={setUser}/>} />
             {/*CRUD routes*/}
             <Route path="/campaigns/:campaignId" element={<Details user={user}/>} />

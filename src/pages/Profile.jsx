@@ -3,7 +3,7 @@ import { Avatar, Typography } from '@mui/material';
 import Favorites from './Favorites';
 import { Container, Box,  Grid, Paper, CssBaseline } from '@mui/material';
 
-
+const achievements = [ 'flood', 'forest', 'grass', 'landscape', 'pedal_bike', 'pets', 'rocket_launch']
 function Profile(props) {
 
   const { user } = props
@@ -32,21 +32,42 @@ function Profile(props) {
             minWidth: '50vw',
             borderRadius: '2em',
             display: 'flex',
+            justifyContent: 'space-between'
           }}
       >
-        <Grid item xs={5} sm={5}>
+        <Paper elevation={0}  mr={8} sx={{ my: { xs: 3, md: 3}, p: 1 }}>
+        <Grid item xs={12} sm={12} ml={8}>
+        <Typography variant="h2" mt={1} mb={4} mr={8}>{user.username}</Typography>
+        
           <Avatar
             alt="user-img"
             src={user.picture}
             sx={{ width: 150, height: 150 }}
         />
         </Grid>
-        <Grid item xs={5} sm={5} ml={8}>
-          <Typography variant="h2" mt={2} mb={5}>{user.username}</Typography>
-        </Grid>
+        </Paper>
+      <Grid item xs={3} sm={3} mt={4} ml={4}>
+      <Paper elevation={3}  sx={{ display: 'flex', flexWrap: 'wrap', my: { xs: 4, md: 6}, p: { xs: 2, md: 3 } }}>
+      {achievements.map((trophy, index)=> {
+
+        return(
+          <div className="trophies achivements-profile">
+            {index % 3 === 0 ? (
+              <div className="achievement-frame-bronze" key={index} >
+              <span class="material-icons md-48">{trophy}</span>
+            </div>
+            ) : (
+              <div className="achievement-frame-gold" key={index} >
+              <span class="material-icons md-48">{trophy}</span>
+            </div>
+            )}
+
+          </div>
+        )
+      })}
+      </Paper>
+      </Grid>
       </Box>
-
-
       <Grid item xs={4} sm={4}>
         <Favorites user={user} favorites={favorites}/>
       </Grid>
